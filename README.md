@@ -55,6 +55,20 @@ Criar um sistema funcional que permita:
 | `evolucao_proxima`       | INT (FK, NULL)           | ID do Pokémon seguinte na linha evolutiva, se houver.                        |
 | `regiao_origem`          | VARCHAR(100)             | Nome da região de origem do Pokémon (exemplo: "Kanto", "Johto").             |
 
+<!--
+id
+nome
+numero_dex
+especie
+tipo_primario
+tipo_secundario
+descricao
+altura
+peso
+url_imagem
+
+-->
+
 ## Apresentação
 
 Haverá um vídeo de apresentação do projeto preparado para o professor, onde explicaremos o funcionamento do sistema e os conceitos aplicados, os arquivos da edição do vídeo poderão ser encontrados neste repositório também.
