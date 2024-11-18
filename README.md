@@ -37,37 +37,19 @@ Criar um sistema funcional que permita:
   
 # Estrutura da Tabela: `pokemon`
 
-| **Coluna**               | **Tipo de Dados**          | **Descrição**                                                                 |
-|--------------------------|---------------------------|-------------------------------------------------------------------------------|
-| `id`                     | INT (PK, Auto-increment)  | Identificador único do Pokémon.                                              |
-| `nome`                   | VARCHAR(100)             | Nome do Pokémon (exemplo: "Pikachu", "Charizard").                           |
-| `numero_dex`             | INT                      | Número do Pokémon na Pokédex.                                                |
-| `tipo_primario`          | VARCHAR(50)              | Tipo principal do Pokémon (exemplo: "Elétrico", "Fogo").                     |
-| `tipo_secundario`        | VARCHAR(50) (NULL)       | Tipo secundário, se houver (exemplo: "Voador"). Pode ser nulo para Pokémon com um único tipo. |
-| `altura`                 | DECIMAL(5,2)             | Altura do Pokémon em metros (exemplo: 0.40).                                 |
-| `peso`                   | DECIMAL(6,2)             | Peso do Pokémon em quilogramas (exemplo: 6.00).                              |
-| `categoria`              | VARCHAR(100)             | Categoria ou "espécie" do Pokémon (exemplo: "Mouse Pokémon").                |
-| `habilidade_primaria`    | VARCHAR(100)             | Habilidade principal do Pokémon (exemplo: "Static").                         |
-| `habilidade_secundaria`  | VARCHAR(100) (NULL)      | Habilidade secundária, se houver (exemplo: "Lightning Rod").                 |
-| `habilidade_oculta`      | VARCHAR(100) (NULL)      | Habilidade oculta do Pokémon, se aplicável (exemplo: "Surge Surfer").        |
-| `geracao`                | INT                      | Geração em que o Pokémon foi introduzido (exemplo: 1, 2, 3).                 |
-| `evolucao_anterior`      | INT (FK, NULL)           | ID do Pokémon anterior na linha evolutiva, se houver.                        |
-| `evolucao_proxima`       | INT (FK, NULL)           | ID do Pokémon seguinte na linha evolutiva, se houver.                        |
-| `regiao_origem`          | VARCHAR(100)             | Nome da região de origem do Pokémon (exemplo: "Kanto", "Johto").             |
+| **Coluna**       | **Tipo de Dados**       | **Descrição**                                                                 |
+|-------------------|-------------------------|-------------------------------------------------------------------------------|
+| `id`             | INT (PK, Auto-increment)| Identificador único do Pokémon.                                              |
+| `nome`           | VARCHAR(100)           | Nome do Pokémon (exemplo: "Pikachu", "Charizard").                           |
+| `numero_dex`     | INT                    | Número do Pokémon na Pokédex.                                                |
+| `especie`        | VARCHAR(100)           | Espécie ou categoria do Pokémon (exemplo: "Mouse Pokémon").                  |
+| `tipo_primario`  | VARCHAR(50)            | Tipo principal do Pokémon (exemplo: "Elétrico", "Fogo").                     |
+| `tipo_secundario`| VARCHAR(50) (NULL)     | Tipo secundário, se houver (exemplo: "Voador"). Pode ser nulo para Pokémon com um único tipo. |
+| `descricao`      | TEXT                   | Breve descrição do Pokémon.                                                  |
+| `altura`         | DECIMAL(5,2)           | Altura do Pokémon em metros (exemplo: 0.40).                                 |
+| `peso`           | DECIMAL(6,2)           | Peso do Pokémon em quilogramas (exemplo: 6.00).                              |
+| `url_imagem`     | VARCHAR(255)           | URL para uma imagem representativa do Pokémon.                               |
 
-<!--
-id
-nome
-numero_dex
-especie
-tipo_primario
-tipo_secundario
-descricao
-altura
-peso
-url_imagem
-
--->
 
 ## Apresentação
 
