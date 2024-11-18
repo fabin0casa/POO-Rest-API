@@ -1,6 +1,6 @@
 /** 
-* O json gera o id automaticamente, só q ele chama de "_id"
-* como nao da pra criar uma tabela no mongo eu coloquei esse exemplo que enfia dados, de acordo com banco que a gente modelou
+* O MONGO gera o id automaticamente, só q ele chama de "_id"
+* como nao da pra criar uma tabela no mongo eu coloquei esse exemplo que insere dados, de acordo com banco que a gente modelou
 */
 
 [{
