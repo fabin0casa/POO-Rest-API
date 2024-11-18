@@ -1,0 +1,17 @@
+/** 
+* O json gera o id automaticamente, só q ele chama de "_id"
+* como nao da pra criar uma tabela no mongo eu coloquei esse exemplo que enfia dados, de acordo com banco que a gente modelou
+*/
+
+[{
+  "nome": "Pikachu",
+  "numero_dex": 25,
+  "especie": "Mouse Pokémon",
+  "tipo_primario": "Elétrico",
+  "tipo_secundario": null,
+  "descricao": "Pikachu é um Pokémon de tipo elétrico e é conhecido como o mascote da franquia Pokémon.",
+  "altura": 0.40,
+  "peso": 6.00,
+  "url_imagem": "https://example.com/pikachu.png"
+}
+]
