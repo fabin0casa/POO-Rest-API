@@ -35,14 +35,13 @@ function mudarSecao(nomeSecao){
 function mudarParaConsultarTodos(secaoAtual){
     const btn = document.createElement('button');
     btn.onclick = consultarTodos;
-    btn.textContent = "Refresh";
+    btn.textContent = "Consultar Todos";
     
     const resultados = document.createElement('div');
     resultados.id = 'resultados';
 
     secaoAtual.append(btn);
     secaoAtual.append(resultados);
-    consultarTodos();
 }
 
 function mudarParaConsultarById(secaoAtual){
@@ -65,8 +64,7 @@ function mudarParaConsultarById(secaoAtual){
 }
 
 function mudarParaCadastrar(secaoAtual){
-    const form = criarFormularioAtributos();
-    form.id = 'form-cadastrar';
+    const form = criarFormularioAtributos(); 
 
     const btnCadastrar = document.createElement('button');
     btnCadastrar.onclick = cadastrar;
@@ -75,7 +73,7 @@ function mudarParaCadastrar(secaoAtual){
     form.append(btnCadastrar);
     
     const resultado = document.createElement('div');
-    resultado.id = 'resultados';
+    resultado.id = 'resultado';
 
     secaoAtual.append(form);
     secaoAtual.append(resultado);
@@ -83,7 +81,6 @@ function mudarParaCadastrar(secaoAtual){
 
 function mudarParaAtualizar(secaoAtual){
     const form = criarFormularioAtributos();
-    form.id = 'form-atualizar';
 
     const btnAtualizar = document.createElement('button');
     btnAtualizar.onclick = atualizar;
@@ -92,7 +89,7 @@ function mudarParaAtualizar(secaoAtual){
     form.append(btnAtualizar);
     
     const resultado = document.createElement('div');
-    resultado.id = 'resultados';
+    resultado.id = 'resultado';
 
     secaoAtual.append(form);
     secaoAtual.append(resultado);
@@ -110,7 +107,7 @@ function mudarParaDeletar(secaoAtual){
     form.appendChild(input);
     
     const resultado = document.createElement('div');
-    resultado.id = 'resultados';
+    resultado.id = 'resultado';
 
     secaoAtual.append(btnDeletar);
     secaoAtual.append(form);
@@ -130,32 +127,14 @@ function criarFormularioAtributos(){
         'Descrição', 'Altura', "Peso", "URL da Imagem"
     ];
 
-    for (i = 0; i < 9; i++){
+    for (i = 0; i < 10; i++){
         const div = document.createElement('div');
 
         const label = document.createElement('label');
         label.textContent = atributosPokemonFormatado[i]+":";
-        label.setAttribute('for', atributosPokemon[i]);
         
         const input = document.createElement('input');
         input.id = atributosPokemon[i];
-        input.name = atributosPokemon[i];
-
-        switch (atributosPokemon[i]) {
-            case 'numero_dex':
-            case 'altura':
-            case 'peso':
-                input.type = 'number'
-                break;
-
-            case 'url_imagem':
-                input.type = 'url';
-                break;
-        
-            default:
-                input.type = 'text';
-                break;
-        }
 
         div.append(label);
         div.append(input);
