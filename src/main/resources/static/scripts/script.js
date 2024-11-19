@@ -1,23 +1,3 @@
-function loadData(){
-    return [
-        {
-            "id": 1,
-            "name": "Jorge",
-        },
-        {
-            "id": 2,
-            "name": "Jao",
-        }
-    ];
-}
-
-function loadOneData(){
-    return {
-        "id": 1,
-        "name": "Jorge",
-    };
-}
-
 async function consultarTodos() {
     try {
         //const response = await fetch("http://localhost:8080/endpoint");
