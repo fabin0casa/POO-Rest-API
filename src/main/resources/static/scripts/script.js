@@ -1,9 +1,7 @@
 async function consultarTodos() {
     try {
-        //const response = await fetch("http://localhost:8080/endpoint");
-        //const data = await response.json();
-
-        const pokemons = loadData();
+        const response = await fetch("http://localhost:8080/pokemon/all");
+        const pokemons = await response.json();
 
         const resultados = document.getElementById('resultados');
         resultados.textContent = '';
@@ -20,10 +18,10 @@ async function consultarTodos() {
 
 async function consultarById(){
     try {
+        const numeroDex = document.getElementById('id').value;
 
-        const idInserido = document.getElementById('id').value;
-
-        const pokemon = loadOneData();
+        const response = await fetch("http://localhost:8080/pokemon/"+numeroDex);
+        const pokemon = await response.json();
 
         const resultados = document.getElementById('resultados');
         resultados.textContent = '';
@@ -32,19 +30,107 @@ async function consultarById(){
         
     } catch (error) {
         console.error('Erro buscando dados:', error);
-        document.getElementById("resultado").textContent = "Erro carregando dados.";
+        document.getElementById("resultados").textContent = "Erro carregando dados.";
     }
 }
 
 async function cadastrar(){
 
+    try {
+
+        const form = document.getElementById("form-cadastrar");
+        const formData = new FormData(form);
+        const pokemon = Object.fromEntries(formData);
+
+        confirmacaoUsuario = confirm("Deseja mesmo cadastrar?")
+
+        if (confirmacaoUsuario){
+        
+            const url = "http://localhost:8080/pokemon/add";
+
+            const option = {
+                method: 'POST',
+                headers:{'Content-Type': 'application/json'},
+                body: JSON.stringify(pokemon)
+            }
+
+            const result = await fetch(url, option);
+
+            if (result.status === 201) {
+                alert('Cadastrado com sucesso');
+            }
+            else {
+                alert('Erro ao cadastrar');
+            }
+        }
+        
+    }
+    catch (error){
+        console.error('Erro ao cadastrar:', error);
+        document.getElementById("resultados").textContent = "Erro ao cadastrar.";
+    }
 }
 
 async function atualizar(){
     
+    try {
+        const form = document.getElementById("form-atualizar");
+        const formData = new FormData(form);
+        const pokemon = Object.fromEntries(formData);
+
+        confirmacaoUsuario = confirm("Deseja mesmo atualizar "+pokemon.nome+", de nº Dex "+pokemon.numeroDex+"?"); 
+
+        if (confirmacaoUsuario){
+            const url = "http://localhost:8080/pokemon/update";
+
+            const option = {
+                method: 'PUT',
+                headers:{'Content-Type': 'application/json'},
+                body: JSON.stringify(pokemon)
+            }
+
+            const result = await fetch(url, option);
+
+            if (result.status === 204) {
+                alert('Atualizado com sucesso!');
+            }
+            else {
+                alert('Erro ao atualizar');
+            }
+        }
+    } catch (error){
+        console.error('Erro ao atualizar:', error);
+        document.getElementById("resultados").textContent = "Erro ao atualizar.";
+    }
+    
 }
 
 async function deletar(){
+    
+    try {
+        const idInserido = document.getElementById('id').value;
+
+        confirmacaoUsuario = confirm("Deseja mesmo deletar o pokémon de nº Dex "+idInserido+"?"); 
+
+        if (confirmacaoUsuario){
+            const url = 'http://localhost:8080/pokemon/delete/'+idInserido;
+
+            const response = await fetch(url, {
+                method: 'DELETE'
+            });
+
+            if (response.status === 204) {
+                alert('Deletado com sucesso');
+            }
+            else {
+                alert('Erro ao deletar');
+            }
+
+        }
+    } catch (error){
+        console.error('Erro ao deletar:', error);
+        document.getElementById("resultados").textContent = "Erro ao deletar.";
+    }
     
 }
 
@@ -59,7 +145,7 @@ function criarPokedexEntry(pokemon){
 
     //Criando a secao da imagem
     const img = document.createElement('img');
-    img.src = pokemon.url_imagem;
+    img.src = pokemon.urlImagem;
     pokedexImagem.append(img);
 
     //Criando o conteudo da pokedex
@@ -68,7 +154,7 @@ function criarPokedexEntry(pokemon){
 
     let p = document.createElement('p');
     
-    p.textContent = pokemon.numero_dex+" "+pokemon.nome;
+    p.textContent = pokemon.numeroDex+" "+pokemon.nome;
     pokedexConteudo.append(p);
 
     p.textContent = pokemon.especie;
@@ -76,12 +162,12 @@ function criarPokedexEntry(pokemon){
     
     p = document.createElement('p');
     let span = document.createElement('span');
-    span.textContent = pokemon.tipo_primario;
+    span.textContent = pokemon.tipoPrimario;
     p.append(span);
 
-    if (pokemon.tipo_secundario !== null){
+    if (pokemon.tipoSecundario !== null){
         span = document.createElement('span');
-        span.textContent = pokemon.tipo_secundario;
+        span.textContent = pokemon.tipoSecundario;
         p.append(span);
     }
 
