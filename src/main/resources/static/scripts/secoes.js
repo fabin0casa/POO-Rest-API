@@ -121,8 +121,8 @@ function criarFormularioAtributos(){
     const form = document.createElement('form');
     
     const atributosPokemon = [
-        'nome', 'numero_dex', 'especie', 'tipo_primario', 'tipo_secundario',
-        'descricao', 'altura', "peso", "url_imagem"
+        'nome', 'numeroDex', 'especie', 'tipoPrimario', 'tipoSecundario',
+        'descricao', 'altura', "peso", "urlImagem"
     ];
 
     const atributosPokemonFormatado = [
@@ -142,13 +142,13 @@ function criarFormularioAtributos(){
         input.name = atributosPokemon[i];
 
         switch (atributosPokemon[i]) {
-            case 'numero_dex':
+            case 'numeroDex':
             case 'altura':
             case 'peso':
                 input.type = 'number'
                 break;
 
-            case 'url_imagem':
+            case 'urlImagem':
                 input.type = 'url';
                 break;
         

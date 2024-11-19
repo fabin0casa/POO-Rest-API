@@ -1,0 +1,4 @@
+#secaoAtual {
+    display: flex;
+    align-items: flex-start; /* Align items vertically */
+} 
