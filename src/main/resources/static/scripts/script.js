@@ -61,6 +61,10 @@ async function consultarTodos() {
 
 async function consultarById(){
     try {
+
+        const idInserido = document.getElementById('id').value;
+        const data = loadOneData();
+
         const tabela = document.createElement("table");
 
         const headerRow = document.createElement("tr");
@@ -74,8 +78,6 @@ async function consultarById(){
 
         tabela.appendChild(headerRow);
     
-        const data = loadOneData();
-
         const linha = document.createElement('tr');
         Object.values(data).forEach(atributo => {
             const campo = document.createElement('td');
@@ -93,4 +95,16 @@ async function consultarById(){
         console.error('Erro buscando dados:', error);
         document.getElementById("resultado").textContent = "Erro carregando dados.";
     }
+}
+
+async function cadastrar(){
+
+}
+
+async function atualizar(){
+    
+}
+
+async function deletar(){
+    
 }
