@@ -34,22 +34,40 @@ Criar um sistema funcional que permita:
 
 3. **Banco de Dados (MongoDB)**:
    - Armazenamento das informações das criaturas Pokémon.
-  
-# Estrutura da Tabela: `pokemon`
 
-| **Coluna**       | **Tipo de Dados**       | **Descrição**                                                                 |
-|-------------------|-------------------------|-------------------------------------------------------------------------------|
-| `id`             | INT (PK, Auto-increment)| Identificador único do Pokémon.                                              |
-| `nome`           | VARCHAR(100)           | Nome do Pokémon (exemplo: "Pikachu", "Charizard").                           |
-| `numero_dex`     | INT                    | Número do Pokémon na Pokédex.                                                |
-| `especie`        | VARCHAR(100)           | Espécie ou categoria do Pokémon (exemplo: "Mouse Pokémon").                  |
-| `tipo_primario`  | VARCHAR(50)            | Tipo principal do Pokémon (exemplo: "Elétrico", "Fogo").                     |
-| `tipo_secundario`| VARCHAR(50) (NULL)     | Tipo secundário, se houver (exemplo: "Voador"). Pode ser nulo para Pokémon com um único tipo. |
-| `descricao`      | TEXT                   | Breve descrição do Pokémon.                                                  |
-| `altura`         | DECIMAL(5,2)           | Altura do Pokémon em metros (exemplo: 0.40).                                 |
-| `peso`           | DECIMAL(6,2)           | Peso do Pokémon em quilogramas (exemplo: 6.00).                              |
-| `url_imagem`     | VARCHAR(255)           | URL para uma imagem representativa do Pokémon.                               |
+## Estrutura do Banco de Dados - `Pokémon` (MongoDB)
 
+Abaixo está a estrutura do banco de dados para armazenar informações sobre os Pokémon, utilizando MongoDB. 
+
+| **Coluna**       | **Tipo de Dados**           | **Descrição**                                                                 |
+|-------------------|-----------------------------|-------------------------------------------------------------------------------|
+| `_id`             | `ObjectId` (PK)             | Identificador único do Pokémon (gerado automaticamente pelo MongoDB).         |
+| `nome`           | `String`                    | Nome do Pokémon (exemplo: "Pikachu", "Charizard").                           |
+| `numero_dex`     | `Number`                    | Número do Pokémon na Pokédex.                                                |
+| `especie`        | `String`                    | Espécie ou categoria do Pokémon (exemplo: "Mouse Pokémon").                  |
+| `tipo_primario`  | `String`                    | Tipo principal do Pokémon (exemplo: "Elétrico", "Fogo").                     |
+| `tipo_secundario`| `String` (ou `null`)        | Tipo secundário, se houver (exemplo: "Voador"). Pode ser nulo para Pokémon com um único tipo. |
+| `descricao`      | `String`                    | Breve descrição do Pokémon.                                                  |
+| `altura`         | `Number` (float)            | Altura do Pokémon em metros (exemplo: 0.40).                                 |
+| `peso`           | `Number` (float)            | Peso do Pokémon em quilogramas (exemplo: 6.00).                              |
+| `url_imagem`     | `String`                    | URL para uma imagem representativa do Pokémon.                               |
+
+### Exemplo de Documento no MongoDB
+
+```json
+{
+  "_id": { "$oid": "507f1f77bcf86cd799439011" },
+  "nome": "Pikachu",
+  "numero_dex": 25,
+  "especie": "Mouse Pokémon",
+  "tipo_primario": "Elétrico",
+  "tipo_secundario": null,
+  "descricao": "Pikachu é um Pokémon de tipo Elétrico. É um dos Pokémon mais conhecidos e é a mascote da franquia.",
+  "altura": 0.40,
+  "peso": 6.00,
+  "url_imagem": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+}
+```
 
 ## Apresentação
 
