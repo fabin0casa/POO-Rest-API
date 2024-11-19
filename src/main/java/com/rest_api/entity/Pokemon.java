@@ -1,6 +1,7 @@
 package com.rest_api.entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -17,7 +18,10 @@ public class Pokemon {
     @Id
     private String id; //o ID no MongoDB é uma string
     private String nome;
+
+    @Indexed(unique = true) // Garante que numeroDex seja único
     private int numeroDex;
+
     private String especie;
     private String tipoPrimario; 
     private String tipoSecundario;
