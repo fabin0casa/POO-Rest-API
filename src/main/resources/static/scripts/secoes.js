@@ -56,7 +56,7 @@ function mudarParaConsultarById(secaoAtual){
     form.appendChild(input);
     
     const resultado = document.createElement('div');
-    resultado.id = 'resultado';
+    resultado.id = 'resultados';
 
     secaoAtual.append(btnConsultarById);
     secaoAtual.append(form);
