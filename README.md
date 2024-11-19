@@ -1,4 +1,5 @@
-# CRUD de Criaturas Pokémon
+# CRUD de Criaturas Pokémon <img src="https://github.com/user-attachments/assets/d3166429-7685-4e0d-8dd1-7165f4ea574d" alt="Pokedex" width="60" height="50">
+
 
 Este é um projeto desenvolvido para a matéria de **Programação Orientada a Objetos (POO)**, com o objetivo de criar um sistema CRUD (Create, Read, Update, Delete) para criaturas do universo Pokémon. 
 
