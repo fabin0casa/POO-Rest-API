@@ -25,11 +25,12 @@ public class PokemonService {
     }
 
     public Pokemon addPokemonService(Pokemon pokemon) {
-        //Definindo a url da imagem com base no numeroDex
-        String urlImagem = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" 
-                            + pokemon.getNumeroDex() + ".png";
-        pokemon.setUrlImagem(urlImagem);
-    
+        if (pokemon.getUrlImagem() == null || pokemon.getUrlImagem().isEmpty()) {
+            //Define a url da imagem com base no numeroDex
+            String urlImagem = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" 
+                                + pokemon.getNumeroDex() + ".png";
+            pokemon.setUrlImagem(urlImagem);
+        }
         return pokemonRepository.save(pokemon);
     }
     
