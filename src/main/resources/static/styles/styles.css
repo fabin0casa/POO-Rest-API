@@ -1,4 +1,148 @@
+* {
+    font-family: 'Arial', sans-serif; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 #secaoAtual {
     display: flex;
     align-items: flex-start; /* Align items vertically */
-} 
+}
+
+#resultados {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+header {
+    background-color: #ffb6f9;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header nav {
+    display: flex; /* Ativa o flexbox */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Centraliza os itens verticalmente */
+    gap: 15px; /* Espaçamento entre os itens */
+}
+
+header nav a img {
+    height: 40px; /* Ajusta o tamanho do logo */
+    display: block;
+}
+
+header nav button {
+    padding: 8px 15px; /* Espaçamento interno do botão */
+    border: 2px solid black; /* Borda preta de 2px */
+    background-color: #007bff; /* Cor de fundo */
+    color: rgb(0, 0, 0); /* Cor do texto */
+    font-size: 14px; /* Tamanho da fonte */
+    cursor: pointer; /* Mostra o cursor de clique */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Efeito suave na cor do fundo e borda */
+}
+
+header nav button:hover {
+    background-color: #8d91ff; /* Cor de fundo ao passar o mouse */
+}
+
+/* Estilo das seções */
+section {
+    margin: 20px 0;
+}
+
+/* Estilização dos formulários */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os itens dentro do formulário */
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; /* Limita a largura do formulário */
+    margin: 0 auto; /* Centraliza o formulário */
+}
+
+form div {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+form input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Estilo para inputs de número */
+form input[type="number"] {
+    width: auto;
+    max-width: 120px;
+}
+
+/* Estilo para input de URL */
+form input[type="url"] {
+    width: 80%;
+}
+
+button {
+    padding: 8px 15px; /* Espaçamento interno do botão */
+    border: 2px solid #007bff; /* Borda preta de 2px */
+    background-color: black; /* Cor de fundo */
+    color: rgb(255, 255, 255); /* Cor do texto */
+    font-size: 14px; /* Tamanho da fonte */
+    cursor: pointer; /* Mostra o cursor de clique */
+    transition: background-color 0.3s ease, border-color 0.3s ease; /* Efeito suave na cor do fundo e borda */
+}
+
+button:hover {
+    background-color: #27284d; /* Cor de fundo ao passar o mouse */
+}
+
+
+/* Estilo dos cartão, nao mexi ainda
+.pokedex-entry {
+    display: flex;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pokedex-imagem img {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.pokedex-conteudo {
+    flex-grow: 1;
+}
+
+.pokedex-conteudo p {
+    margin: 5px 0;
+}
+
+.pokedex-descricao {
+    font-style: italic;
+    color: #666;
+    margin-top: 10px;
+}*/
