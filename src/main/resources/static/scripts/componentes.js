@@ -132,6 +132,9 @@ function criarDropdownTipos(){
 
     const dropDownTipos = document.createElement("select");
 
+    const opcaoNenhum = document.createElement('option');
+    dropDownTipos.append(opcaoNenhum);
+
     TIPOS_POKEMON.forEach(tipo => {
         const opcao = document.createElement('option');
         opcao.text = tipo;
