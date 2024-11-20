@@ -205,7 +205,7 @@ function criarFormularioAtributos(){
                 const dropDownTipos = criarDropdownTipos();
 
                 dropDownTipos.id = atributo.nome;
-                dropDownTipos.name = atributo.nomeExibicao;
+                dropDownTipos.name = atributo.nome;
                 div.append(dropDownTipos);
                 
                 form.append(div);
