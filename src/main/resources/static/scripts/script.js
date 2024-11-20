@@ -16,9 +16,9 @@ async function consultarTodos() {
     }
 }
 
-async function consultarById(){
+async function consultarByNumeroDex(){
     try {
-        const numeroDex = document.getElementById('id').value;
+        const numeroDex = document.getElementById('numero-dex').value;
 
         const response = await fetch("http://localhost:8080/pokemon/"+numeroDex);
         const pokemon = await response.json();
@@ -37,8 +37,7 @@ async function consultarById(){
 async function cadastrar(){
 
     try {
-
-        const form = document.getElementById("form-cadastrar");
+        const form = document.getElementById("form");
         const formData = new FormData(form);
         const pokemon = Object.fromEntries(formData);
 
@@ -74,7 +73,7 @@ async function cadastrar(){
 async function atualizar(){
     
     try {
-        const form = document.getElementById("form-atualizar");
+        const form = document.getElementById("form");
         const formData = new FormData(form);
         const pokemon = Object.fromEntries(formData);
 
@@ -108,12 +107,12 @@ async function atualizar(){
 async function deletar(){
     
     try {
-        const idInserido = document.getElementById('id').value;
+        const nDex = document.getElementById('numero-dex').value;
 
-        confirmacaoUsuario = confirm("Deseja mesmo deletar o pokémon de nº Dex "+idInserido+"?"); 
+        confirmacaoUsuario = confirm("Deseja mesmo deletar o pokémon de nº Dex "+nDex+"?"); 
 
         if (confirmacaoUsuario){
-            const url = 'http://localhost:8080/pokemon/delete/'+idInserido;
+            const url = 'http://localhost:8080/pokemon/delete/'+nDex;
 
             const response = await fetch(url, {
                 method: 'DELETE'

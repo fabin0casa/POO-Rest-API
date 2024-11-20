@@ -18,6 +18,10 @@
     border-radius: 8px;
 }
 
+#form button {
+    margin-top: 10px;
+}
+
 header {
     background-color: #ffb6f9;
     padding: 10px 0;
