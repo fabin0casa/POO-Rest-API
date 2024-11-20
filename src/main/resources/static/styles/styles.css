@@ -1,5 +1,5 @@
 * {
-    font-family: 'Arial', sans-serif; 
+    font-family: 'Arial', sans-serif; /*da pra por uma fonte pixelizada*/
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -82,7 +82,7 @@ form label {
     color: #333;
 }
 
-form input {
+form input, form select {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
@@ -100,6 +100,17 @@ form input[type="number"] {
 form input[type="url"] {
     width: 80%;
 }
+
+form select {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-top: 6px;
+}
+
 
 button {
     padding: 8px 15px; /* Espaçamento interno do botão */
