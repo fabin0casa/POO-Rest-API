@@ -48,21 +48,29 @@ function mudarParaConsultarTodos(secaoAtual){
 }
 
 function mudarParaConsultarById(secaoAtual){
+    // Criação do botão de consultar
     const btnConsultarById = document.createElement('button');
     btnConsultarById.onclick = consultarById;
     btnConsultarById.textContent = "Consultar Id";
+    btnConsultarById.type = "button";
 
     const form = document.createElement('form');
-    const input = document.createElement('input');
 
+    // Criação do input para o ID
+    const input = document.createElement('input');
     input.id = 'id';
+    input.placeholder = "Digite o número do Dex do Pokémon";
     form.appendChild(input);
-    
+
+    btnConsultarById.style.marginTop = "10px";  // Espaçamento superior do botão
+
+    // Criação da área de resultados
     const resultado = document.createElement('div');
     resultado.id = 'resultados';
 
-    secaoAtual.append(btnConsultarById);
+    // Adiciona o botão, o formulário e os resultados na seção atual
     secaoAtual.append(form);
+    form.appendChild(btnConsultarById);  // Coloca o botão dentro do formulário
     secaoAtual.append(resultado);
 }
 
@@ -101,20 +109,27 @@ function mudarParaAtualizar(secaoAtual){
 }
 
 function mudarParaDeletar(secaoAtual){
+    const form = document.createElement('form');
+
+    // Criação do input para o ID
+    const input = document.createElement('input');
+    input.id = 'id';
+    input.placeholder = "Digite o número do Dex do Pokémon a deletar";
+    form.appendChild(input);
+
+    // Criação do botão de deletar
     const btnDeletar = document.createElement('button');
     btnDeletar.onclick = deletar;
     btnDeletar.textContent = "Deletar";
+    btnDeletar.type = "button";  // Definido como 'button' para não submeter o formulário automaticamente
+    btnDeletar.style.marginTop = "10px";
+    form.appendChild(btnDeletar);
 
-    const form = document.createElement('form');
-    const input = document.createElement('input');
-
-    input.id = 'id';
-    form.appendChild(input);
-    
+    // Criação da área de resultados
     const resultado = document.createElement('div');
     resultado.id = 'resultados';
 
-    secaoAtual.append(btnDeletar);
+    // Adiciona o formulário e os resultados na seção atual
     secaoAtual.append(form);
     secaoAtual.append(resultado);
 }
