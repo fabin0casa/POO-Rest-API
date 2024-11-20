@@ -1,3 +1,5 @@
+consultarTodos();
+
 function mudarSecao(nomeSecao){
 
     const secaoAtual = document.getElementById('secaoAtual');

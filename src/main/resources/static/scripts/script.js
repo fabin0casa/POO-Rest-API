@@ -91,7 +91,7 @@ async function atualizar(){
 
             const result = await fetch(url, option);
 
-            if (result.status === 204) {
+            if (result.status === 200) {
                 alert('Atualizado com sucesso!');
             }
             else {
