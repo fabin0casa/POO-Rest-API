@@ -1,4 +1,4 @@
-consultarTodos();
+mudarParaConsultarTodos(secaoAtual);
 
 function mudarSecao(nomeSecao){
 
@@ -121,49 +121,131 @@ function mudarParaDeletar(secaoAtual){
 
 function criarFormularioAtributos(){
     const form = document.createElement('form');
-    
+
     const atributosPokemon = [
-        'nome', 'numeroDex', 'especie', 'tipoPrimario', 'tipoSecundario',
-        'descricao', 'altura', "peso", "urlImagem"
+        {
+            "nome":"nome",
+            "nomeExibicao":"Nome",
+        },
+        {
+            "nome":"numeroDex",
+            "nomeExibicao":"Número Dex",
+        },
+        {
+            "nome":"especie",
+            "nomeExibicao":"Espécie",
+        },
+        {
+            "nome":"tipoPrimario",
+            "nomeExibicao":"Tipo Primário",
+        },
+        {
+            "nome":"tipoSecundario",
+            "nomeExibicao":"Tipo Secundário",
+        },
+        {
+            "nome":"descricao",
+            "nomeExibicao":"Descrição",
+        },
+        {
+            "nome":"altura",
+            "nomeExibicao":"Altura",
+        },
+        {
+            "nome":"peso",
+            "nomeExibicao":"Peso",
+        },
+        {
+            "nome":"urlImagem",
+            "nomeExibicao":"URL da Imagem",
+        }
     ];
 
-    const atributosPokemonFormatado = [
-        'Nome', 'Número Dex', 'Espécie', 'Tipo Primário', 'Tipo Secundário',
-        'Descrição', 'Altura', "Peso", "URL da Imagem"
-    ];
-
-    for (i = 0; i < 9; i++){
+    atributosPokemon.forEach(atributo => {
         const div = document.createElement('div');
-
         const label = document.createElement('label');
-        label.textContent = atributosPokemonFormatado[i]+":";
-        label.setAttribute('for', atributosPokemon[i]);
-        
-        const input = document.createElement('input');
-        input.id = atributosPokemon[i];
-        input.name = atributosPokemon[i];
 
-        switch (atributosPokemon[i]) {
-            case 'numeroDex':
-            case 'altura':
-            case 'peso':
-                input.type = 'number'
-                break;
-
-            case 'urlImagem':
-                input.type = 'url';
-                break;
-        
+        switch (atributo.nome) {
             default:
-                input.type = 'text';
+                label.textContent = atributo.nomeExibicao+":";
+                label.setAttribute('for', atributo.nome);
+                
+                const input = document.createElement('input');
+                input.id = atributo.nome;
+                input.name = atributo.nome;
+
+                switch (atributo.nome) {
+                    case 'numeroDex':
+                    case 'altura':
+                    case 'peso':
+                        input.type = 'number'
+                        break;
+
+                    case 'urlImagem':
+                        input.type = 'url';
+                        break;
+                
+                    default:
+                        input.type = 'text';
+                        break;
+                }
+
+                div.append(label);
+                div.append(input);
+
+                form.append(div);
+                break;
+        
+            case 'tipoPrimario':
+            case 'tipoSecundario':
+                label.textContent = atributo.nomeExibicao+":";
+                label.setAttribute('for', atributo.nome);
+                div.append(label);
+
+                const dropDownTipos = criarDropdownTipos();
+
+                dropDownTipos.id = atributo.nome;
+                dropDownTipos.name = atributo.nomeExibicao;
+                div.append(dropDownTipos);
+                
+                form.append(div);
                 break;
         }
+    });
 
-        div.append(label);
-        div.append(input);
-
-        form.append(div);
-    }
-    
     return form;
+}
+
+function criarDropdownTipos(){
+
+    tiposPokemon = [
+        "Normal",
+        "Fogo",
+        "Água",
+        "Elétrico",
+        "Grama",
+        "Gelo",
+        "Lutador",
+        "Veneno",
+        "Terra",
+        "Voador",
+        "Psíquico",
+        "Inseto",
+        "Pedra",
+        "Fantasma",
+        "Dragão",
+        "Sombrio",
+        "Metal",
+        "Fada"
+    ];
+
+    const dropDownTipos = document.createElement("select");
+
+    tiposPokemon.forEach(tipo => {
+        const opcao = document.createElement('option');
+        opcao.text = tipo;
+        dropDownTipos.append(opcao);
+    });
+
+    return dropDownTipos;
 }
