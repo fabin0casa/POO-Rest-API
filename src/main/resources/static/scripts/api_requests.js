@@ -59,7 +59,8 @@ async function cadastrar(){
                 alert('Cadastrado com sucesso');
             }
             else {
-                alert('Erro ao cadastrar');
+                const resposta = await result.json();
+                alert("Erro ao cadastrar: "+resposta.error);
             }
         }
         
@@ -94,7 +95,8 @@ async function atualizar(){
                 alert('Atualizado com sucesso!');
             }
             else {
-                alert('Erro ao atualizar');
+                const resposta = await result.json();
+                alert("Erro ao atualizar: "+resposta.error);
             }
         }
     } catch (error){
@@ -122,7 +124,8 @@ async function deletar(){
                 alert('Deletado com sucesso');
             }
             else {
-                alert('Erro ao deletar');
+                const resposta = await result.json();
+                alert("Erro ao deletar: "+resposta.error);
             }
 
         }
