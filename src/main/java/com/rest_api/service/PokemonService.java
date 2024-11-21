@@ -32,6 +32,10 @@ public class PokemonService {
         try {
             pokemonValidator.validar(pokemon);
             
+            if (pokemon.getTipoSecundario().isEmpty()){
+                pokemon.setTipoSecundario(null);
+            }
+
             if (pokemon.getUrlImagem() == null || pokemon.getUrlImagem().isEmpty()) {
                 //Define a url da imagem com base no numeroDex
                 String urlImagem = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" 
@@ -63,6 +67,11 @@ public class PokemonService {
             updatedPokemon.setNome(pokemon.getNome());
             updatedPokemon.setEspecie(pokemon.getEspecie());
             updatedPokemon.setTipoPrimario(pokemon.getTipoPrimario());
+
+            if (pokemon.getTipoSecundario().isEmpty()){
+                pokemon.setTipoSecundario(null);
+            }
+
             updatedPokemon.setTipoSecundario(pokemon.getTipoSecundario());
             updatedPokemon.setDescricao(pokemon.getDescricao());
             updatedPokemon.setAltura(pokemon.getAltura());
