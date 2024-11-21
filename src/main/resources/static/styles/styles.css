@@ -10,14 +10,6 @@
     align-items: flex-start; /* Align items vertically */
 }
 
-#resultados {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-}
-
 #form button {
     margin-top: 10px;
 }
@@ -130,34 +122,151 @@ button:hover {
     background-color: #27284d; /* Cor de fundo ao passar o mouse */
 }
 
-
-/* Estilo dos cartão, nao mexi ainda
+/* Container principal do cartão */
 .pokedex-entry {
     display: flex;
-    margin-bottom: 15px;
-    padding: 10px;
-    background-color: #f0f0f0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px; /* Reduzindo o tamanho */
+    background-color: #ffffff;
+    border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative; /* Habilita posicionamento relativo para o número */
 }
 
+.pokedex-entry:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Número no canto superior esquerdo */
+.pokedex-entry::before {
+    content: attr(data-numeroDex); /* Usando o atributo data-numeroDex */
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: #ffeb3b;
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 2px 6px;
+}
+
+/* Imagem do Pokémon */
 .pokedex-imagem img {
-    width: 120px;
+    width: 120px; /* Ajustando o tamanho da imagem */
     height: 120px;
-    border-radius: 8px;
-    margin-right: 20px;
+    object-fit: contain;
+    margin-bottom: 10px;
 }
 
-.pokedex-conteudo {
-    flex-grow: 1;
-}
-
+/* Conteúdo textual */
 .pokedex-conteudo p {
     margin: 5px 0;
 }
 
-.pokedex-descricao {
-    font-style: italic;
-    color: #666;
+/* Nome do Pokémon */
+.pokedex-conteudo .pokemon-nome {
+    font-size: 18px; /* Maior destaque */
+    font-weight: bold;
+    color: #000000;
+}
+
+/* Espécie do Pokémon */
+.pokedex-conteudo .pokemon-especie {
+    font-size: 14px;
+    color: #3e3e3e;
+}
+
+/* Estilização para Altura e Peso */
+.pokemon-dimensoes {
+    width: 100%; /* Para preencher a largura do cartão */
+    border-collapse: collapse;
     margin-top: 10px;
-}*/
+}
+
+.pokemon-dimensoes td {
+    padding: 6px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
+}
+
+.pokemon-dimensoes .dimensoes-label {
+    font-weight: bold;
+    text-align: left;
+    background-color: #f3f3f3; /* Fundo diferente para rótulos */
+}
+
+.pokemon-dimensoes .dimensoes-valor {
+    text-align: right;
+    background-color: #fff; /* Fundo para valores */
+}
+
+
+/* Tipos de Pokémon */
+.pokedex-conteudo span {
+    display: inline-block;
+    background-color: #e0f7fa;
+    color: #006064;
+    border-radius: 5px;
+    padding: 4px 8px;
+    margin: 2px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Descrição */
+.pokedex-descricao {
+    font-size: 12px; /* Texto menor para a descrição */
+    color: #666;
+    margin-top: 8px;
+    font-style: italic;
+}
+
+/* Contêiner principal da consulta */
+.container-consulta {
+    display: flex;
+    flex-direction: column; /* Organiza verticalmente */
+    align-items: center;    /* Centraliza horizontalmente */
+    justify-content: flex-start; /* Mantém o conteúdo no topo */
+    width: 100%;            /* Ocupa toda a largura disponível */
+    padding: 20px;          /* Espaçamento interno */
+    margin: 0 auto;         /* Centraliza horizontalmente na tela */
+}
+
+
+/* Contêiner principal (engloba botão e resultados) */
+.pokedex-container-completa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centraliza verticalmente se necessário */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    max-width: 1200px; /* Largura máxima opcional */
+    width: 100%; /* Garante que o contêiner não exceda a largura da tela */
+    padding: 20px; /* Espaçamento interno */
+}
+
+
+/* Botão centralizado */
+.pokedex-refresh-button {
+    margin-bottom: 20px;
+}
+
+/* Layout em grid responsivo */
+.pokedex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Espaçamento entre os cartões */
+    padding: 20px;
+    background-color: #f9f9f9; /*ta aqui mais pra eu poder vizualizar o container*/
+}

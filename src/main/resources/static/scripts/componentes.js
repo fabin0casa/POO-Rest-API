@@ -1,74 +1,95 @@
-function criarPokedexEntry(pokemon){
-    
-    //Criando a pokedexEntry
+function criarPokedexEntry(pokemon) {
+    // Criando a pokedexEntry
     const pokedexEntry = document.createElement('div');
     pokedexEntry.className = 'pokedex-entry';
+    pokedexEntry.setAttribute('data-numeroDex', `#${pokemon.numeroDex}`);
 
+    // Criando a seção da imagem
     const pokedexImagem = document.createElement('div');
     pokedexImagem.className = 'pokedex-imagem';
 
-    //Criando a secao da imagem
     const img = document.createElement('img');
     img.src = pokemon.urlImagem;
     pokedexImagem.append(img);
 
-    //Criando o conteudo da pokedex
+    // Criando o conteúdo da pokedex
     const pokedexConteudo = document.createElement('div');
     pokedexConteudo.className = 'pokedex-conteudo';
 
+    // Exibindo o nome
     let p = document.createElement('p');
-    
-    p.textContent = pokemon.numeroDex+" "+pokemon.nome;
+    p.className = 'pokemon-nome';
+    p.textContent = pokemon.nome;
     pokedexConteudo.append(p);
 
+    // Espécie do Pokémon
+    p = document.createElement('p');
+    p.className = 'pokemon-especie';
     p.textContent = pokemon.especie;
     pokedexConteudo.append(p);
-    
-    p = document.createElement('p');
+
+    // Exibindo os tipos
+    p = document.createElement('p'); // Novo elemento para os tipos
     let span = document.createElement('span');
     span.textContent = pokemon.tipoPrimario;
     p.append(span);
 
-    if (pokemon.tipoSecundario !== null){
+    if (pokemon.tipoSecundario !== null) {
         span = document.createElement('span');
         span.textContent = pokemon.tipoSecundario;
         p.append(span);
     }
-
     pokedexConteudo.append(p);
 
-    p = document.createElement('p');
-    span = document.createElement('span');
-    span.textContent = 'Altura';
-    p.append(span);
+    // Exibindo altura e peso em estilo de tabela
+    const dimensoes = document.createElement('table');
+    dimensoes.className = 'pokemon-dimensoes';
 
-    span = document.createElement('span');
-    span.textContent = pokemon.altura;
-    p.append(span);
-    pokedexConteudo.append(p);
+    // Linha para altura
+    let linhaAltura = document.createElement('tr');
 
-    p = document.createElement('p');
-    span = document.createElement('span');
-    span.textContent = "Peso";
-    p.append(span);
+    let labelAltura = document.createElement('td');
+    labelAltura.textContent = 'Altura:';
+    labelAltura.className = 'dimensoes-label';
 
-    span = document.createElement('span');
-    span.textContent = pokemon.peso;
-    p.append(span);
-    pokedexConteudo.append(p);
+    let valorAltura = document.createElement('td');
+    valorAltura.textContent = pokemon.altura;
+    valorAltura.className = 'dimensoes-valor';
 
-    //Criando secao da descricao
+    linhaAltura.append(labelAltura, valorAltura);
+    dimensoes.append(linhaAltura);
+
+    // Linha para peso
+    let linhaPeso = document.createElement('tr');
+
+    let labelPeso = document.createElement('td');
+    labelPeso.textContent = 'Peso:';
+    labelPeso.className = 'dimensoes-label';
+
+    let valorPeso = document.createElement('td');
+    valorPeso.textContent = pokemon.peso;
+    valorPeso.className = 'dimensoes-valor';
+
+    linhaPeso.append(labelPeso, valorPeso);
+    dimensoes.append(linhaPeso);
+
+    // Adicionar dimensões ao conteúdo da Pokédex
+    pokedexConteudo.append(dimensoes);
+
+
+    // Criando seção da descrição
     const pokedexDescricao = document.createElement('div');
     pokedexDescricao.className = 'pokedex-descricao';
     pokedexDescricao.textContent = pokemon.descricao;
 
-    //Retornando
+    // Retornando
     pokedexEntry.append(pokedexImagem);
     pokedexEntry.append(pokedexConteudo);
     pokedexEntry.append(pokedexDescricao);
 
     return pokedexEntry;
 }
+
 
 function criarFormularioAtributos(){
     const form = document.createElement('form');

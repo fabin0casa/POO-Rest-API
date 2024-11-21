@@ -34,44 +34,72 @@ function mudarSecao(nomeSecao){
 
 }
 
-function mudarParaConsultarTodos(secaoAtual){
+function mudarParaConsultarTodos(secaoAtual) {
+    // Cria um contêiner para o botão e os resultados
+    const container = document.createElement('div');
+    container.className = 'pokedex-container-completa'; // Classe principal para estilizar tudo
+
+    // Cria o botão e centraliza
     const btn = document.createElement('button');
     btn.onclick = consultarTodos;
     btn.textContent = "Refresh";
-    
+    btn.className = 'pokedex-refresh-button';
+
+    // Cria a área onde os resultados serão exibidos
     const resultados = document.createElement('div');
     resultados.id = 'resultados';
+    resultados.className = 'pokedex-container';
 
-    secaoAtual.append(btn);
-    secaoAtual.append(resultados);
+    // Adiciona o botão e os resultados ao contêiner
+    container.append(btn);
+    container.append(resultados);
+
+    // Adiciona o contêiner à seção atual
+    secaoAtual.append(container);
+
+    // Executa a consulta inicial
     consultarTodos();
 }
 
-function mudarParaConsultarByNumeroDex(secaoAtual){
-    // Criação do botão de consultar
-    const btn = document.createElement('button');
-    btn.onclick = consultarByNumeroDex;
-    btn.textContent = "Consultar por Nº Dex";
-    btn.type = "button";
 
+function mudarParaConsultarByNumeroDex(secaoAtual) {
+    // Contêiner principal que vai organizar tudo verticalmente
+    const containerPrincipal = document.createElement('div');
+    containerPrincipal.className = 'container-consulta';
+
+    // Formulário de consulta
     const form = document.createElement('form');
     form.id = 'form';
 
-    // Criação do input para o ID
+    // Input para o número do Dex
     const input = document.createElement('input');
     input.id = 'numero-dex';
     input.placeholder = "Digite o número do Dex do Pokémon";
     form.appendChild(input);
 
-    // Criação da área de resultados
-    const resultado = document.createElement('div');
-    resultado.id = 'resultados';
+    // Botão de consulta
+    const btn = document.createElement('button');
+    btn.onclick = (event) => {
+        event.preventDefault(); // Impede o envio padrão do formulário
+        consultarByNumeroDex();
+    };
+    btn.textContent = "Consultar por Nº Dex";
+    btn.type = "button";
+    form.appendChild(btn);
 
-    // Adiciona o botão, o formulário e os resultados na seção atual
-    secaoAtual.append(form);
-    form.appendChild(btn);  // Coloca o botão dentro do formulário
-    secaoAtual.append(resultado);
+    // Contêiner de resultados
+    const resultadoContainer = document.createElement('div');
+    resultadoContainer.id = 'resultados';
+    resultadoContainer.className = 'pokedex-container'; // Usa o estilo do container para os cartões
+
+    // Adiciona o formulário e o container de resultados ao contêiner principal
+    containerPrincipal.appendChild(form);
+    containerPrincipal.appendChild(resultadoContainer);
+
+    // Adiciona o contêiner principal à seção
+    secaoAtual.appendChild(containerPrincipal);
 }
+
 
 function mudarParaCadastrar(secaoAtual){
     const form = criarFormularioAtributos();
@@ -107,28 +135,43 @@ function mudarParaAtualizar(secaoAtual){
     secaoAtual.append(resultado);
 }
 
-function mudarParaDeletar(secaoAtual){
+function mudarParaDeletar(secaoAtual) {
+    // Contêiner principal que vai organizar tudo verticalmente
+    const containerPrincipal = document.createElement('div');
+    containerPrincipal.className = 'container-consulta'; // Reutiliza o estilo do contêiner
+
+    // Formulário para deletar Pokémon
     const form = document.createElement('form');
     form.id = 'form';
 
-    // Criação do input para o ID
+    // Input para o número do Dex
     const input = document.createElement('input');
     input.id = 'numero-dex';
     input.placeholder = "Digite o número do Dex do Pokémon a deletar";
     form.appendChild(input);
 
-    // Criação do botão de deletar
+    // Botão de deletar
     const btnDeletar = document.createElement('button');
-    btnDeletar.onclick = deletar;
+    btnDeletar.onclick = async (event) => {
+        event.preventDefault();
+        consultarByNumeroDex();
+        await new Promise(resolve => setTimeout(resolve, 100)); //gambiarrinha pra pausar o programa por 0,1 segundos, se não o deletar() queima a largada
+        deletar();
+    };
+    
     btnDeletar.textContent = "Deletar";
-    btnDeletar.type = "button";  // Definido como 'button' para não submeter o formulário automaticamente
+    btnDeletar.type = "button"; // Define como botão
     form.appendChild(btnDeletar);
 
-    // Criação da área de resultados
-    const resultado = document.createElement('div');
-    resultado.id = 'resultados';
+    // Contêiner de resultados (feedback ou mensagens)
+    const resultadoContainer = document.createElement('div');
+    resultadoContainer.id = 'resultados';
+    resultadoContainer.className = 'pokedex-container'; // Usa estilo para centralizar conteúdo, se necessário
 
-    // Adiciona o formulário e os resultados na seção atual
-    secaoAtual.append(form);
-    secaoAtual.append(resultado);
+    // Adiciona o formulário e os resultados ao contêiner principal
+    containerPrincipal.appendChild(form);
+    containerPrincipal.appendChild(resultadoContainer);
+
+    // Adiciona o contêiner principal à seção
+    secaoAtual.appendChild(containerPrincipal);
 }
