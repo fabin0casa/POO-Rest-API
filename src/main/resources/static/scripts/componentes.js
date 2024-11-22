@@ -30,16 +30,23 @@ function criarPokedexEntry(pokemon) {
 
     // Exibindo os tipos
     p = document.createElement('p'); // Novo elemento para os tipos
+
+    // Tipo primário
     let span = document.createElement('span');
     span.textContent = pokemon.tipoPrimario;
+    span.className = `tipo-${pokemon.tipoPrimario.toLowerCase()}`; // Classe baseada no tipo
     p.append(span);
 
+    // Tipo secundário (se existir)
     if (pokemon.tipoSecundario !== null) {
         span = document.createElement('span');
         span.textContent = pokemon.tipoSecundario;
+        span.className = `tipo-${pokemon.tipoSecundario.toLowerCase()}`; // Classe baseada no tipo
         p.append(span);
     }
+
     pokedexConteudo.append(p);
+
 
     // Exibindo altura e peso em estilo de tabela
     const dimensoes = document.createElement('table');
@@ -53,7 +60,7 @@ function criarPokedexEntry(pokemon) {
     labelAltura.className = 'dimensoes-label';
 
     let valorAltura = document.createElement('td');
-    valorAltura.textContent = pokemon.altura;
+    valorAltura.textContent = `${pokemon.altura.toFixed(2)} m`;
     valorAltura.className = 'dimensoes-valor';
 
     linhaAltura.append(labelAltura, valorAltura);
@@ -67,7 +74,7 @@ function criarPokedexEntry(pokemon) {
     labelPeso.className = 'dimensoes-label';
 
     let valorPeso = document.createElement('td');
-    valorPeso.textContent = pokemon.peso;
+    valorPeso.textContent = `${pokemon.peso.toFixed(1)} kg`;
     valorPeso.className = 'dimensoes-valor';
 
     linhaPeso.append(labelPeso, valorPeso);
@@ -91,7 +98,7 @@ function criarPokedexEntry(pokemon) {
 }
 
 
-function criarFormularioAtributos(){
+function criarFormularioCadastrar() {
     const form = document.createElement('form');
 
     ATRIBUTOS_POKEMON.forEach(atributo => {
@@ -100,24 +107,49 @@ function criarFormularioAtributos(){
 
         switch (atributo.nome) {
             default:
-                label.textContent = atributo.nomeExibicao+":";
+                label.textContent = atributo.nomeExibicao + ":";
                 label.setAttribute('for', atributo.nome);
-                
+
                 const input = document.createElement('input');
                 input.id = atributo.nome;
                 input.name = atributo.nome;
 
                 switch (atributo.nome) {
+                    case 'nome':
+                        input.type = 'text';
+                        input.placeholder = 'Nome do Pokémon';
+                        break;
+
                     case 'numeroDex':
+                        input.type = 'number';
+                        input.placeholder = 'Nº Pokédex';
+                        break;
+
+                    case 'especie':
+                        input.type = 'text';
+                        input.placeholder = 'Espécie do Pokémon';
+                        break;
+
                     case 'altura':
+                        input.type = 'number';
+                        input.placeholder = 'Em metros';
+                        break;
+
                     case 'peso':
-                        input.type = 'number'
+                        input.type = 'number';
+                        input.placeholder = 'Em quilos';
+                        break;
+
+                    case 'descricao':
+                        input.type = 'text';
+                        input.placeholder = 'Breve contextualização do Pokémon';
                         break;
 
                     case 'urlImagem':
                         input.type = 'url';
+                        input.placeholder = 'Link da imagem (Opcional)';
                         break;
-                
+
                     default:
                         input.type = 'text';
                         break;
@@ -128,10 +160,10 @@ function criarFormularioAtributos(){
 
                 form.append(div);
                 break;
-        
+
             case 'tipoPrimario':
             case 'tipoSecundario':
-                label.textContent = atributo.nomeExibicao+":";
+                label.textContent = atributo.nomeExibicao + ":";
                 label.setAttribute('for', atributo.nome);
                 div.append(label);
 
@@ -140,10 +172,96 @@ function criarFormularioAtributos(){
                 dropDownTipos.id = atributo.nome;
                 dropDownTipos.name = atributo.nome;
                 div.append(dropDownTipos);
-                
+
                 form.append(div);
                 break;
         }
+    });
+
+    return form;
+}
+
+
+function criarFormularioAtualizar() {
+    const form = document.createElement('form');
+
+    // Adiciona evento no campo numeroDex para buscar os dados
+    const carregarDadosPokemon = async (numeroDex) => {
+        try {
+            // Faz a requisição para buscar os dados do Pokémon
+            const response = await fetch(`pokemon/${numeroDex}`);
+            if (!response.ok) throw new Error('Pokémon não encontrado');
+            
+            const pokemon = await response.json();
+
+            // Preenche os campos com os dados retornados
+            ATRIBUTOS_POKEMON.forEach(atributo => {
+                const input = document.getElementById(atributo.nome);
+                if (input && atributo.nome !== 'numeroDex') {
+                    input.value = pokemon[atributo.nome] || '';
+                    input.disabled = false; // Desbloqueia os campos
+                }
+            });
+        } catch (error) {
+            alert('Erro ao buscar Pokémon: ' + error.message);
+        }
+    };
+
+    // Processa primeiro o campo numeroDex
+    const divNumeroDex = document.createElement('div');
+    const labelNumeroDex = document.createElement('label');
+    labelNumeroDex.textContent = "Nº Pokédex:";
+    labelNumeroDex.setAttribute('for', 'numeroDex');
+
+    const inputNumeroDex = document.createElement('input');
+    inputNumeroDex.id = 'numeroDex';
+    inputNumeroDex.name = 'numeroDex';
+    inputNumeroDex.type = 'number';
+    inputNumeroDex.placeholder = 'Nº Pokédex';
+    inputNumeroDex.addEventListener('change', () => {
+        const numeroDex = inputNumeroDex.value.trim();
+        if (numeroDex) carregarDadosPokemon(numeroDex);
+    });
+
+    divNumeroDex.append(labelNumeroDex, inputNumeroDex);
+    form.append(divNumeroDex);
+
+    // Processa os demais atributos
+    ATRIBUTOS_POKEMON.forEach(atributo => {
+        if (atributo.nome === 'numeroDex') return; // Já processado
+
+        const div = document.createElement('div');
+        const label = document.createElement('label');
+        label.textContent = atributo.nomeExibicao + ":";
+        label.setAttribute('for', atributo.nome);
+
+        if (atributo.nome === 'tipoPrimario' || atributo.nome === 'tipoSecundario') {
+            // Dropdown para tipos
+            const dropDownTipos = criarDropdownTipos();
+            dropDownTipos.id = atributo.nome;
+            dropDownTipos.name = atributo.nome;
+            dropDownTipos.disabled = true; // Começa bloqueado
+            div.append(label, dropDownTipos);
+        } else {
+            // Campos de texto e número
+            const input = document.createElement('input');
+            input.id = atributo.nome;
+            input.name = atributo.nome;
+
+            switch (atributo.nome) {
+                case 'nome': input.type = 'text'; input.placeholder = 'Nome do Pokémon'; break;
+                case 'especie': input.type = 'text'; input.placeholder = 'Espécie do Pokémon'; break;
+                case 'altura': input.type = 'number'; input.placeholder = 'Em metros'; break;
+                case 'peso': input.type = 'number'; input.placeholder = 'Em quilos'; break;
+                case 'descricao': input.type = 'text'; input.placeholder = 'Breve contextualização do Pokémon'; break;
+                case 'urlImagem': input.type = 'url'; input.placeholder = 'Link da imagem'; break;
+                default: input.type = 'text'; break;
+            }
+            input.disabled = true; // Começa bloqueado
+            div.append(label, input);
+        }
+
+        form.append(div);
     });
 
     return form;

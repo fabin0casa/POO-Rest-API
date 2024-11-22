@@ -102,7 +102,7 @@ function mudarParaConsultarByNumeroDex(secaoAtual) {
 
 
 function mudarParaCadastrar(secaoAtual){
-    const form = criarFormularioAtributos();
+    const form = criarFormularioCadastrar();
     form.id = 'form';
 
     const btnCadastrar = document.createElement('button');
@@ -119,7 +119,7 @@ function mudarParaCadastrar(secaoAtual){
 }
 
 function mudarParaAtualizar(secaoAtual){
-    const form = criarFormularioAtributos();
+    const form = criarFormularioAtualizar();
     form.id = 'form';
 
     const btnAtualizar = document.createElement('button');

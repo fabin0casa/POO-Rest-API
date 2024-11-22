@@ -92,9 +92,12 @@ form input[type="number"] {
     max-width: 120px;
 }
 
-/* Estilo para input de URL */
-form input[type="url"] {
-    width: 80%;
+input[disabled], select[disabled], textarea[disabled] {
+    background-color: #e7e7e7; /* Cor de fundo para indicar que está desativado */
+    color: #999999;           /* Cor do texto mais clara */
+    border: 1px solid #cccccc; /* Bordas mais suaves */
+    cursor: not-allowed;      /* Cursor indicando que não pode ser clicado */
+    opacity: 0.7;             /* Reduz a opacidade para visualmente diferenciá-los */
 }
 
 form select {
@@ -106,7 +109,6 @@ form select {
     font-size: 16px;
     margin-top: 6px;
 }
-
 
 button {
     padding: 8px 15px; /* Espaçamento interno do botão */
@@ -185,11 +187,13 @@ button:hover {
     color: #3e3e3e;
 }
 
-/* Estilização para Altura e Peso */
 .pokemon-dimensoes {
-    width: 100%; /* Para preencher a largura do cartão */
+    width: 50px; /* Define a largura fixa da tabela */
+    margin: 0 auto; /* Centraliza horizontalmente no contêiner */
     border-collapse: collapse;
     margin-top: 10px;
+    border-collapse: separate; /* Permite usar espaçamento entre células */
+    border-spacing: 0 5px;
 }
 
 .pokemon-dimensoes td {
@@ -197,30 +201,122 @@ button:hover {
     border: 1px solid #ddd;
     font-size: 14px;
     color: #333;
+    text-align: center; /* Centraliza o texto */
+    white-space: nowrap; /* Evita que o texto quebre em várias linhas */
+    overflow: hidden;         /* Oculta o conteúdo extra */
+    text-overflow: ellipsis; 
 }
 
 .pokemon-dimensoes .dimensoes-label {
     font-weight: bold;
-    text-align: left;
-    background-color: #f3f3f3; /* Fundo diferente para rótulos */
+    background-color: #f3f3f3; /* Fundo diferente para os rótulos */
 }
 
 .pokemon-dimensoes .dimensoes-valor {
-    text-align: right;
-    background-color: #fff; /* Fundo para valores */
+    background-color: #fff; /* Fundo diferente para os valores */
 }
 
 
+
 /* Tipos de Pokémon */
-.pokedex-conteudo span {
+.pokedex-conteudo span[class^="tipo-"] {
     display: inline-block;
-    background-color: #e0f7fa;
-    color: #006064;
     border-radius: 5px;
     padding: 4px 8px;
     margin: 2px;
     font-size: 12px;
     font-weight: bold;
+}
+
+/* Estilos específicos para cada tipo */
+.tipo-normal {
+    background-color: #7a7a7a;
+    color: white;
+}
+
+.tipo-fogo {
+    background-color: #b00909;
+    color: #f0a26a;
+}
+
+.tipo-água {
+    background-color: #0034af;
+    color: #c0c0ed;
+}
+
+.tipo-elétrico {
+    background-color: #e4d100;
+    color: #ffffff;
+}
+
+.tipo-grama {
+    background-color: #53b522;
+    color: #134c13;
+}
+
+.tipo-gelo {
+    background-color: #98d8d8;
+    color: white;
+}
+
+.tipo-lutador {
+    background-color: #48270c;
+    color:rgb(187, 174, 164);
+}
+
+.tipo-veneno {
+    background-color: #780bb3;
+    color:#b4a1b7;
+}
+
+.tipo-terra {
+    background-color: #754506;
+    color:#efdabd;
+}
+
+.tipo-voador {
+    background-color: #57abff;
+    color:#e4f2ff;
+}
+
+.tipo-psíquico {
+    background-color: #f85888;
+    color:#eed8ea;
+}
+
+.tipo-inseto {
+    background-color: #5e9708;
+    color:#d9e2ca;
+}
+
+.tipo-pedra {
+    background-color: #4c4234;
+    color:#c7c3bd;
+}
+
+.tipo-fantasma {
+    background-color: #342054;
+    color:#ddd4e8;
+}
+
+.tipo-dragão {
+    background-color: #6b4aa0;
+    color:#ebe5f3;
+}
+
+.tipo-sombrio {
+    background-color: #1c1915;
+    color:#c0bbb3;
+}
+
+.tipo-metal {
+    background-color: #6f6f6f;
+    color:#dcdcdc;
+}
+
+.tipo-fada {
+    background-color: #eabff1;
+    color:rgb(99, 60, 93);
 }
 
 /* Descrição */
@@ -250,7 +346,6 @@ button:hover {
     align-items: center;
     justify-content: center; /* Centraliza verticalmente se necessário */
     margin: 0 auto; /* Centraliza horizontalmente */
-    max-width: 1200px; /* Largura máxima opcional */
     width: 100%; /* Garante que o contêiner não exceda a largura da tela */
     padding: 20px; /* Espaçamento interno */
 }
@@ -268,5 +363,4 @@ button:hover {
     justify-content: center;
     gap: 15px; /* Espaçamento entre os cartões */
     padding: 20px;
-    background-color: #f9f9f9; /*ta aqui mais pra eu poder vizualizar o container*/
 }
