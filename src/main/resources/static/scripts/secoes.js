@@ -42,7 +42,7 @@ function mudarParaConsultarTodos(secaoAtual) {
     // Cria o botão e centraliza
     const btn = document.createElement('button');
     btn.onclick = consultarTodos;
-    btn.textContent = "Refresh";
+    btn.textContent = "Recarregar";
     btn.className = 'pokedex-refresh-button';
 
     // Cria a área onde os resultados serão exibidos
@@ -70,6 +70,7 @@ function mudarParaConsultarByNumeroDex(secaoAtual) {
     // Formulário de consulta
     const form = document.createElement('form');
     form.id = 'form';
+    form.classList.add('form-consultar');
 
     // Input para o número do Dex
     const input = document.createElement('input');
@@ -104,6 +105,7 @@ function mudarParaConsultarByNumeroDex(secaoAtual) {
 function mudarParaCadastrar(secaoAtual){
     const form = criarFormularioCadastrar();
     form.id = 'form';
+    form.classList.add('form-cadastrar');
 
     const btnCadastrar = document.createElement('button');
     btnCadastrar.onclick = cadastrar;
@@ -121,6 +123,7 @@ function mudarParaCadastrar(secaoAtual){
 function mudarParaAtualizar(secaoAtual){
     const form = criarFormularioAtualizar();
     form.id = 'form';
+    form.classList.add('form-atualizar');
 
     const btnAtualizar = document.createElement('button');
     btnAtualizar.onclick = atualizar;
@@ -143,6 +146,7 @@ function mudarParaDeletar(secaoAtual) {
     // Formulário para deletar Pokémon
     const form = document.createElement('form');
     form.id = 'form';
+    form.classList.add('form-deletar');
 
     // Input para o número do Dex
     const input = document.createElement('input');

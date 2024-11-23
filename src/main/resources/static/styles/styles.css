@@ -92,14 +92,29 @@ form {
     flex-direction: column;
     align-items: center; /* Centraliza os itens dentro do formulário */
     padding: 20px;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    background-color: #262626d8;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px; /* Limita a largura do formulário */
     margin: 0 auto; /* Centraliza o formulário */
 }
+
+.form-consultar {
+    border: 2.5px solid rgb(27, 232, 0);
+}
+
+.form-cadastrar {
+    border: 2.5px solid rgb(255, 238, 0);
+}
+
+.form-atualizar {
+    border: 2.5px solid rgb(0, 232, 224);
+}
+
+.form-deletar {
+    border: 2.5px solid rgb(108, 0, 232);
+}
+
 
 form div {
     margin-bottom: 15px;
@@ -110,15 +125,46 @@ form label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
-    color: #333;
+    color: #ffffff;
 }
 
 form input, form select {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
     font-size: 16px;
+}
+
+form select {
+    width: 100%;
+    padding: 10px;
+    background-color: #2d2d2d;
+    color: #ffffff; 
+    font-size: 16px;
+    margin-top: 6px;
+}
+
+.form-consultar input, select {
+    border: 2px solid rgb(27, 232, 0);
+}
+
+.form-cadastrar input, select {
+    border: 2px solid rgb(255, 238, 0);
+}
+
+.form-cadastrar select {
+    border: 2px solid rgb(255, 238, 0);
+}
+
+.form-atualizar input, select {
+    border: 2px solid rgb(0, 232, 224);
+}
+
+.form-atualizar select {
+    border: 2px solid rgb(0, 232, 224);
+}
+
+.form-deletar input, select {
+    border: 2px solid rgb(108, 0, 232);
 }
 
 /* Estilo para inputs de número */
@@ -127,22 +173,25 @@ form input[type="number"] {
     max-width: 132px;
 }
 
+input{
+    background-color: #2d2d2d;
+    color: #ffffff; 
+}
+
+input::placeholder {
+    color: #cfcfcf; /* Cor do texto do placeholder */
+}
+
 input[disabled], select[disabled], textarea[disabled] {
-    background-color: #e7e7e7; /* Cor de fundo para indicar que está desativado */
-    color: #999999;           /* Cor do texto mais clara */
+    background-color: #2d2d2d; /* Cor de fundo para indicar que está desativado */
+    color: #e9e9e9;           /* Cor do texto mais clara */
     border: 1px solid #cccccc; /* Bordas mais suaves */
     cursor: not-allowed;      /* Cursor indicando que não pode ser clicado */
     opacity: 0.7;             /* Reduz a opacidade para visualmente diferenciá-los */
 }
 
-form select {
-    width: 100%;
-    padding: 10px;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    margin-top: 6px;
+input[disabled]::placeholder, select[disabled]::placeholder, textarea[disabled]::placeholder {
+    color: #7a7a7a; /* Cor do texto do placeholder */
 }
 
 button {
@@ -153,6 +202,22 @@ button {
     font-size: 14px; /* Tamanho da fonte */
     cursor: pointer; /* Mostra o cursor de clique */
     transition: background-color 0.3s ease, border-color 0.3s ease; /* Efeito suave na cor do fundo e borda */
+}
+
+.form-consultar button {
+    border: 2px solid rgb(27, 232, 0);
+}
+
+.form-cadastrar button {
+    border: 2px solid rgb(255, 238, 0);
+}
+
+.form-atualizar button {
+    border: 2px solid rgb(0, 232, 224);
+}
+
+.form-deletar button {
+    border: 2px solid rgb(108, 0, 232);
 }
 
 button:hover {
@@ -392,6 +457,7 @@ button:hover {
 /* Botão centralizado */
 .pokedex-refresh-button {
     margin-bottom: 20px;
+    border: 2px solid rgb(232, 0, 116);
 }
 
 /* Layout em grid responsivo */
