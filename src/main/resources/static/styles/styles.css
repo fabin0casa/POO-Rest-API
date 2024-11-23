@@ -360,7 +360,7 @@ button:hover {
 /* Descrição */
 .pokedex-descricao {
     font-size: 12px; /* Texto menor para a descrição */
-    color: #868686;
+    color: #ececec;
     margin-top: 8px;
     font-style: italic;
 }
