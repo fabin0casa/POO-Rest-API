@@ -1,8 +1,19 @@
+@font-face {
+    font-family: 'pokemon-gen-4-fullwidth';
+    src: url('../fonts/pokemon-gen-4-fullwidth.ttf') format('truetype');
+}
+
 * {
-    font-family: 'Arial', sans-serif; /*da pra por uma fonte pixelizada*/
+    font-family: 'pokemon-gen-4-fullwidth';
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body{
+    background-image: url('../imagens/textura.png'); /* Substitua pelo caminho da sua imagem */
+    background-repeat: repeat; /* Repete a textura horizontal e verticalmente */
+    background-size: 10px; /* Mantém o tamanho original da imagem */
 }
 
 #secaoAtual {
@@ -15,7 +26,7 @@
 }
 
 header {
-    background-color: #ffb6f9;
+    background-color: #a49bd7; /*não sei q cor por aqui eureumreumreum*/
     padding: 10px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -34,16 +45,40 @@ header nav a img {
 
 header nav button {
     padding: 8px 15px; /* Espaçamento interno do botão */
-    border: 2px solid black; /* Borda preta de 2px */
-    background-color: #007bff; /* Cor de fundo */
-    color: rgb(0, 0, 0); /* Cor do texto */
-    font-size: 14px; /* Tamanho da fonte */
+    color: white; /* Cor do texto */
+    font-size: 16px; /* Tamanho da fonte */
     cursor: pointer; /* Mostra o cursor de clique */
     transition: background-color 0.3s ease, border-color 0.3s ease; /* Efeito suave na cor do fundo e borda */
 }
 
+/* Estilos específicos para cada botão */
+.btn-consultar {
+    border: 4px solid rgb(232, 0, 116); /* Borda preta de 2px */
+    background-color: black; /* Cor de fundo */
+}
+
+.btn-por-dex {
+    border: 4px solid rgb(27, 232, 0); /* Borda preta de 2px */
+    background-color: black; /* Cor de fundo */
+}
+
+.btn-cadastrar {
+    border: 4px solid rgb(255, 238, 0); /* Borda preta de 2px */
+    background-color: black; /* Cor de fundo */
+}
+
+.btn-atualizar {
+    border: 4px solid rgb(0, 232, 224); /* Borda preta de 2px */
+    background-color: black; /* Cor de fundo */
+}
+
+.btn-deletar {
+    border: 4px solid rgb(108, 0, 232); /* Borda preta de 2px */
+    background-color: black; /* Cor de fundo */
+}
+
 header nav button:hover {
-    background-color: #8d91ff; /* Cor de fundo ao passar o mouse */
+    background-color: #27284d; /* Cor de fundo ao passar o mouse */
 }
 
 /* Estilo das seções */
@@ -89,7 +124,7 @@ form input, form select {
 /* Estilo para inputs de número */
 form input[type="number"] {
     width: auto;
-    max-width: 120px;
+    max-width: 132px;
 }
 
 input[disabled], select[disabled], textarea[disabled] {
