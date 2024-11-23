@@ -24,8 +24,7 @@ public class PokemonController {
     //consultar todos
     @GetMapping("/all")
     public ResponseEntity<List<Pokemon>> getAllPokemons() {
-        List<Pokemon> pokemons = pokemonService.getAllPokemonService();
-        return ResponseEntity.ok(pokemons);
+        return ResponseEntity.ok(pokemonService.getAllPokemonService());
     }
 
     //consultar pelo numero da PokeDex

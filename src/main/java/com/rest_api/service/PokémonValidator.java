@@ -25,6 +25,19 @@ public class PokémonValidator {
             throw new Exception("Tipo Primário não pode ser nulo!");
         }
 
+        if (pokemon.getAltura() < 0){
+            throw new Exception("Altura não pode ser negativa!");
+        }
+
+        if (pokemon.getPeso() < 0){
+            throw new Exception("Peso não pode ser negativo!");
+        }
+
+        validarTipoPrimario(pokemon);
+        validarTipoSecundario(pokemon);
+    }
+
+    private void validarTipoPrimario(Pokemon pokemon) throws Exception {
         boolean tipoPrimarioInexistente = true;
         for (PokemonTypes p : PokemonTypes.values()) {
             if (pokemon.getTipoPrimario().equals(p.getNome())){
@@ -35,7 +48,9 @@ public class PokémonValidator {
         if (tipoPrimarioInexistente){
             throw new Exception("Tipo Primário "+pokemon.getTipoPrimario()+" não existe");
         }
+    }
 
+    private void validarTipoSecundario(Pokemon pokemon) throws Exception {
         boolean tipoSecundarioVazio = pokemon.getTipoSecundario() == null || pokemon.getTipoSecundario().isEmpty(); 
         if (!(tipoSecundarioVazio)){
             boolean tipoSecundarioInexistente = true;
@@ -48,14 +63,6 @@ public class PokémonValidator {
             if (tipoSecundarioInexistente){
                 throw new Exception("Tipo Secundário "+pokemon.getTipoSecundario()+" não existe");
             }
-        }
-
-        if (pokemon.getAltura() < 0){
-            throw new Exception("Altura não pode ser negativa!");
-        }
-
-        if (pokemon.getPeso() < 0){
-            throw new Exception("Peso não pode ser negativo!");
         }
     }
     

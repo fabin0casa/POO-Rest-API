@@ -20,8 +20,7 @@ public class PokemonService {
     private PokémonValidator pokemonValidator;
 
     public List<Pokemon> getAllPokemonService(){
-        List<Pokemon> pokemons = pokemonRepository.findAll();
-        return pokemons;
+        return pokemonRepository.findAll();
     }
 
     public Optional<Pokemon> getPokemonByNumeroDex(int numeroDex) {
@@ -37,18 +36,14 @@ public class PokemonService {
             }
 
             if (pokemon.getUrlImagem() == null || pokemon.getUrlImagem().isEmpty()) {
-                //Define a url da imagem com base no numeroDex
-                String urlImagem = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" 
-                                    + pokemon.getNumeroDex() + ".png";
-                pokemon.setUrlImagem(urlImagem);
+                definirUrlImagemPadrao(pokemon);
             }
             return pokemonRepository.save(pokemon);
         }
+        catch (DuplicateKeyException e){
+            throw new Exception("Número Dex duplicado!");
+        }
         catch (Exception e){
-            if (e instanceof DuplicateKeyException){
-                throw new Exception("Número Dex duplicado!");
-            }
-
             throw e;
         }
     }
@@ -81,4 +76,13 @@ public class PokemonService {
         }
         return null;
     }
+
+    private void definirUrlImagemPadrao(Pokemon pokemon){
+        //Define a url da imagem com base no numeroDex
+        pokemon.setUrlImagem(
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" 
+            + pokemon.getNumeroDex() + ".png"
+        );
+    }
+
 }
