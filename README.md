@@ -37,6 +37,7 @@ Criar um sistema funcional que permita:
    - Armazenamento das informações das criaturas Pokémon.
 
 ## Estrutura do Banco de Dados - `Pokémon` (MongoDB)
+Para este projeto usamos um Banco de Dados chamado `banco_poo_prj2` e uma coleção de nome `pokemon`.
 
 Abaixo está a estrutura do banco de dados para armazenar informações sobre os Pokémon, utilizando MongoDB. 
 
