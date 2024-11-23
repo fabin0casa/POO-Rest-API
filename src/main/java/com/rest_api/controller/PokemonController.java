@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.mongodb.DuplicateKeyException;
 import com.rest_api.entity.Pokemon;
 import com.rest_api.service.PokemonService;
 
@@ -75,14 +74,8 @@ public class PokemonController {
     }
 
     private ResponseEntity<?> retornarRespostaErro(Exception e) {
-        String msg = e.getMessage();
-
-        if (e instanceof DuplicateKeyException){
-            msg = "Número Dex já existe!";
-        }
-        
         Map<String, String> response = new HashMap<>();
-        response.put("error", msg);
+        response.put("error", e.getMessage());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }
 
