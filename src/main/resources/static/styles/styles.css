@@ -166,15 +166,20 @@ button:hover {
     align-items: center;
     justify-content: space-between;
     width: 250px; /* Reduzindo o tamanho */
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border: 2px solid #00cfba;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 10px;
     padding: 10px;
     text-align: center;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    position: relative; /* Habilita posicionamento relativo para o número */
+    position: relative; /* Habilita posicionamento relativo */
+    background-image: repeating-linear-gradient(
+        -45deg,              /* Ângulo das listras */
+        #262626d8,            /* Cor da primeira listra */
+        #262626d8 150px,       /* Tamanho da primeira listra */
+        #424242d8 100px,       /* Espaço entre as listras */
+        #424242d8 300px        /* Tamanho total do ciclo */
+    );
 }
 
 .pokedex-entry:hover {
@@ -213,13 +218,13 @@ button:hover {
 .pokedex-conteudo .pokemon-nome {
     font-size: 18px; /* Maior destaque */
     font-weight: bold;
-    color: #000000;
+    color: #ffffff;
 }
 
 /* Espécie do Pokémon */
 .pokedex-conteudo .pokemon-especie {
     font-size: 14px;
-    color: #3e3e3e;
+    color: #c8c8c8;
 }
 
 .pokemon-dimensoes {
@@ -233,9 +238,9 @@ button:hover {
 
 .pokemon-dimensoes td {
     padding: 6px;
-    border: 1px solid #ddd;
+    border: 1px solid #837e7e8a;
     font-size: 14px;
-    color: #333;
+    color: #e8e8e8;
     text-align: center; /* Centraliza o texto */
     white-space: nowrap; /* Evita que o texto quebre em várias linhas */
     overflow: hidden;         /* Oculta o conteúdo extra */
@@ -244,14 +249,12 @@ button:hover {
 
 .pokemon-dimensoes .dimensoes-label {
     font-weight: bold;
-    background-color: #f3f3f3; /* Fundo diferente para os rótulos */
+    background-color: #5150508a; /* Fundo diferente para os rótulos */
 }
 
 .pokemon-dimensoes .dimensoes-valor {
-    background-color: #fff; /* Fundo diferente para os valores */
+    background-color: #807e7e8a; /* Fundo diferente para os valores */
 }
-
-
 
 /* Tipos de Pokémon */
 .pokedex-conteudo span[class^="tipo-"] {
@@ -357,7 +360,7 @@ button:hover {
 /* Descrição */
 .pokedex-descricao {
     font-size: 12px; /* Texto menor para a descrição */
-    color: #666;
+    color: #868686;
     margin-top: 8px;
     font-style: italic;
 }
