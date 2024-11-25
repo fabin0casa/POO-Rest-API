@@ -159,7 +159,7 @@ function mudarParaDeletar(secaoAtual) {
     btnDeletar.onclick = async (event) => {
         event.preventDefault();
         consultarByNumeroDex();
-        await new Promise(resolve => setTimeout(resolve, 100)); //gambiarrinha pra pausar o programa por 0,1 segundos, se não o deletar() queima a largada
+        await new Promise(resolve => setTimeout(resolve, 200)); //gambiarrinha pra pausar o programa por 0,2 segundos, se não o deletar() queima a largada
         deletar();
     };
     

@@ -1,6 +1,6 @@
 async function consultarTodos() {
     try {
-        const response = await fetch("http://localhost:8080/pokemon/all");
+        const response = await fetch("/pokemon/all");
         const pokemons = await response.json();
 
         const resultados = document.getElementById('resultados');
@@ -20,7 +20,7 @@ async function consultarByNumeroDex(){
     try {
         const numeroDex = document.getElementById('numero-dex').value;
 
-        const response = await fetch("http://localhost:8080/pokemon/"+numeroDex);
+        const response = await fetch("/pokemon/"+numeroDex);
         const pokemon = await response.json();
 
         const resultados = document.getElementById('resultados');
@@ -45,7 +45,7 @@ async function cadastrar(){
 
         if (confirmacaoUsuario){
         
-            const url = "http://localhost:8080/pokemon/add";
+            const url = "/pokemon/add";
 
             const option = {
                 method: 'POST',
@@ -81,7 +81,7 @@ async function atualizar(){
         confirmacaoUsuario = confirm("Deseja mesmo atualizar "+pokemon.nome+", de nº Dex "+pokemon.numeroDex+"?"); 
 
         if (confirmacaoUsuario){
-            const url = "http://localhost:8080/pokemon/update";
+            const url = "/pokemon/update";
 
             const option = {
                 method: 'PUT',
@@ -114,7 +114,7 @@ async function deletar(){
         confirmacaoUsuario = confirm("Deseja mesmo deletar o pokémon de nº Dex "+nDex+"?"); 
 
         if (confirmacaoUsuario){
-            const url = 'http://localhost:8080/pokemon/delete/'+nDex;
+            const url = '/pokemon/delete/'+nDex;
 
             const response = await fetch(url, {
                 method: 'DELETE'
