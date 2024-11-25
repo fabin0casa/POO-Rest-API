@@ -52,7 +52,7 @@ Abaixo está a estrutura do banco de dados para armazenar informações sobre os
 | `descricao`      | `String`                    | Breve descrição do Pokémon.                                                  |
 | `altura`         | `Number` (float)            | Altura do Pokémon em metros (exemplo: 0.40).                                 |
 | `peso`           | `Number` (float)            | Peso do Pokémon em quilogramas (exemplo: 6.00).                              |
-| `url_imagem`     | `String`                    | URL para uma imagem representativa do Pokémon.                               |
+| `url_imagem`     | `String`                    | URL para uma imagem representativa do Pokémon.                               | 
 
 ### Exemplo de Documento no MongoDB
 
