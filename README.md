@@ -71,10 +71,6 @@ Abaixo está a estrutura do banco de dados para armazenar informações sobre os
 }
 ```
 
-## Apresentação
-
-Haverá um vídeo de apresentação do projeto preparado para o professor, onde explicaremos o funcionamento do sistema e os conceitos aplicados, os arquivos da edição do vídeo poderão ser encontrados neste repositório também.
-
 ## Requisitos de Execução
 
 - Java 21.
@@ -82,3 +78,11 @@ Haverá um vídeo de apresentação do projeto preparado para o professor, onde 
 - MongoDB configurado e em execução.
 - Browser para acessar o frontend.
 
+## Apresentação
+
+Haverá um vídeo de apresentação do projeto preparado para o professor, onde explicaremos o funcionamento do sistema e os conceitos aplicados, os arquivos da edição do vídeo poderão ser encontrados neste repositório também.
+
+O vídeo foi colocado no youtube como não listado.
+
+Clique **[aqui](https://youtu.be/s0onRcG4fYk)** para assistir ao vídeo.
+![image](https://github.com/user-attachments/assets/9ea94059-48b0-4654-88a4-6b3c00cc7c73)
