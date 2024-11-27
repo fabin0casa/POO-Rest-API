@@ -78,6 +78,11 @@ Abaixo está a estrutura do banco de dados para armazenar informações sobre os
 - MongoDB configurado e em execução.
 - Browser para acessar o frontend.
 
+## Deploy
+Fizemos o deploy do site no *Render*, você pode acessar o site através do link:
+### [poo-pokedex.onrender.com](https://poo-pokedex.onrender.com/)
+Como estamos utilizando um plano gratúito, após um tempo de inatividade o site entra em 'hibernação' e pode demorar pra carregar ao ser acessado novamente
+
 ## Apresentação
 
 Haverá um vídeo de apresentação do projeto preparado para o professor, onde explicaremos o funcionamento do sistema e os conceitos aplicados, os arquivos da edição do vídeo poderão ser encontrados neste repositório também.
